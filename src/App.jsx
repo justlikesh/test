@@ -2,20 +2,55 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+function ItemComponent(Props){
+  return <li>{Props.children}</li>
+}
 
+function ListComponent(){
+  const members =  [{
+    id : 1,
+    name : 'Aaron',
+    desc : '잘부탁드립니다.'
+  },
+  {
+    id : 2,
+    name : 'Baron',
+    desc : '잘부탁드립니다.'
+  },
+  {
+    id : 3,
+    name : 'Caron',
+    desc : '잘부탁드립니다.'
+  },
+  {
+    id : 4,
+    name : 'Daron',
+    desc : '잘부탁드립니다.'
+  },
+]
+
+  return (
+    <ul>
+      {members.map((eachMember, index) =>{
+        return (<ItemComponent key ={index}>{eachMember.id}, {eachMember.name}, {eachMember.desc}</ItemComponent>)
+      })}
+    </ul>
+  )
+}
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
+    <ListComponent/>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </div>
+      </div> */}
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
